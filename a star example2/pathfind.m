@@ -1,5 +1,6 @@
 clear;
 clc;
+tic
 disp('A Star Path Planing start!!')
 load map;
 map.grid(map.grid(:)==-10|map.grid(:)==-20)=NaN;
@@ -39,3 +40,4 @@ end
 %}
 view(180, 90); %# Swap the axes
 set(gca, 'ydir', 'reverse'); 
+toc

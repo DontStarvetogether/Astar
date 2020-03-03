@@ -116,6 +116,7 @@ while ~findFlag
 %     hold on;
 %     FillPlot(open,'g')
 %     hold on;
+%     drawnow;
     
 
 end
