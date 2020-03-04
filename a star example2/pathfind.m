@@ -1,21 +1,30 @@
 clear;
 clc;
-tic
-disp('A Star Path Planing start!!')
 load map;
 delta=map.delta;
 xmin=map.xmin;
 ymin=map.ymin;
-% map.grid(map.grid(:)==-10|map.grid(:)==-20)=NaN;
 Xindex=1:1:size(map.grid,2);
 Yindex=1:1:size(map.grid,1);
 [Gridx,Gridy]=meshgrid(Xindex,Yindex);
-hold on;
-mesh(Gridx*delta+xmin,Gridy*delta+ymin,map.grid);hold on;
+mesh(Gridx*delta+xmin,Gridy*delta+ymin,map.grid,map.C);hold on;
 pcshow(map.objectpoint.Location,'r');
 view(-90,90);
+pc=map.objectpoint.Location;
+pc(:,2)=pc(:,2)-ymin;
+pc(:,1)=pc(:,1)-xmin;
+pc(:,1:2)=floor(pc(:,1:2)./delta)+1;
+count=zeros(size(map.grid));
+for ii=1:size(pc,1)
+    count((pc(ii,1)-1)*size(Yindex,2)+pc(ii,2))=count((pc(ii,1)-1)*size(Yindex,2)+pc(ii,2))+1;
+end
+map.grid(count(:)>=2)=NaN;
 [sx,sy] = ginput(1);
+pause(0.1);
 [gx,gy] = ginput(1);
+pause(0.1);
+disp('A Star Path Planing start!!')
+tic
 startx=floor((sx-xmin)/delta)+1;
 starty=floor((sy-ymin)/delta)+1;
 
