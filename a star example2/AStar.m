@@ -78,7 +78,7 @@ while ~findFlag
         m(3)=m(4)+h(m(1:2),map.goal,map.delta);% m(3)  相邻节点F值
         
         %>>如果它不可达，忽略它，处理下一个相邻节点  (注意，obstacle这个数组中是包括边界的)
-        if isnan(map.grid(m(1),m(2)))
+        if isnan(map.grid(m(1),m(2)))||map.C(m(1),m(2))==-10||map.C(m(1),m(2))==-20||map.G(m(1),m(2))>0.2
             continue;
         end
         
@@ -112,9 +112,9 @@ while ~findFlag
 %     hold on;
 %     pause(0.01);
 %     %绘制节点close和open节点
-%     FillPlot(close,'r');
+%     FillPlot(close,'r',map.delta,map.xmin, map.ymin);
 %     hold on;
-%     FillPlot(open,'g')
+%     FillPlot(open,'g',map.delta,map.xmin, map.ymin);
 %     hold on;
 %     drawnow;
     

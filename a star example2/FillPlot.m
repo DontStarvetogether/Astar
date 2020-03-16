@@ -1,4 +1,4 @@
-function FillPlot(coord,color)
+function FillPlot(coord,color,delta,xmin, ymin)
 
 
 %coord为给出的点的坐标，为 n by 2 的向量，第一列为点的x坐标，第二列为点的y坐标 
@@ -8,8 +8,8 @@ function FillPlot(coord,color)
 
 for i = 1:length(coord(:,1))
    
-    x = coord(i,1);
-    y = coord(i,2);
+    y = coord(i,1)*delta+ymin;
+    x = coord(i,2)*delta+xmin;
     
     X = [x-0.5,x+0.5,x+0.5,x-0.5];
     Y = [y-0.5,y-0.5,y+0.5,y+0.5];
