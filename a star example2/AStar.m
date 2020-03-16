@@ -112,9 +112,9 @@ while ~findFlag
 %     hold on;
 %     pause(0.01);
 %     %绘制节点close和open节点
-%     FillPlot(close,'r');
+%     FillPlot(close,'r',map.delta,map.xmin, map.ymin);
 %     hold on;
-%     FillPlot(open,'g')
+%     FillPlot(open,'g',map.delta,map.xmin, map.ymin);
 %     hold on;
 %     drawnow;
     
